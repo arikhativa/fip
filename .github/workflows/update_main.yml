@@ -1,2 +1,14 @@
-  - name: Update git branch
-    uses: Embraser01/update-git-branch-action@v1.0.0
+on: push
+name: Update prod branch on release
+jobs:
+  updateBranch:
+    name: Update staging branch
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - uses: Embraser01/update-git-branch-action@v1.0.0
+      if: github.ref == 'refs/heads/main'
+      with:
+        branch: main
+        force: 1 # To push-force to the branch
+        githubToken: ${{ secrets.PAT_TOKEN }} # Github Token

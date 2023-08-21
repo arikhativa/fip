@@ -19,7 +19,7 @@ jobs:
       run: git checkout -b main
   
     - name: Create file
-      run: echo aa > a
+      run: node fip.js
     
     - name: Commit changes
       run: |

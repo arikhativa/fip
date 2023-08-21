@@ -18,7 +18,7 @@ jobs:
         git config --local user.name "GitHub Action"
     
     - name: Create a new branch
-      run: git checkout -b main
+      run: git checkout main
   
     - name: Create file
       run: |

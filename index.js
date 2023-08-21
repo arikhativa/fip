@@ -25,15 +25,36 @@ function main() {
 
 		const textToAppend = `${data.now.firstLine} - ${data.now.secondLine}\n`;
 
-		fs.appendFile(filePath, textToAppend, (err) => {
-			if (err) {
-			  console.error('Error appending text:', err);
-			} else {
-			  console.log('Text appended successfully.');
+		fs.readFile(filePath, 'utf8', (readErr, content) => {
+			if (readErr) {
+			  console.error('Error reading file:', readErr);
+			  return;
 			}
-		  })
+		  
+			const firstLine = content.trim().split('\n')[0];
+			if (firstLine === textToAppend.trim()) {
+				return;
+			}
+
+			// Prepend the new text to the existing content
+			const updatedContent = textToAppend + content;
+		  
+			// Write the updated content back to the file
+			fs.writeFile(filePath, updatedContent, (writeErr) => {
+			  if (writeErr) {
+				console.error('Error writing file:', writeErr);
+			  } else {
+				console.log('Text prepended successfully.');
+			  }
+			});
+		});
     }
   );
 }
 
+// function sleep(ms) {
+// 	return new Promise(resolve => setTimeout(resolve, ms));
+//   }
+
 main();
+// await sleep(30000); 

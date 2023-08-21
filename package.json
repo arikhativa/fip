@@ -1,0 +1,26 @@
+{
+  "name": "fip",
+  "version": "1.0.0",
+  "description": "playlist maker",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arikhativa/fip.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/arikhativa/fip/issues"
+  },
+  "homepage": "https://github.com/arikhativa/fip#readme",
+  "dependencies": {
+    "express": "4.18.2",
+    "node-fetch": "^3.3.2",
+    "querystring": "0.2.1",
+    "request": "2.88.2"
+  }
+}

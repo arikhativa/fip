@@ -7,7 +7,7 @@ jobs:
     steps:
     - uses: actions/checkout@master
     - uses: Embraser01/update-git-branch-action@v1.0.0
-      if: github.ref == 'refs/heads/master'
+      if: github.ref == 'refs/heads/main'
       with:
         branch: stage
         force: 1 # To push-force to the branch

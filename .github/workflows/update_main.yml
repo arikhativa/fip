@@ -1,14 +1,34 @@
+name: Update Main Branch
+
 on: push
-name: Update prod branch on release
+
 jobs:
-  updateBranch:
-    name: Update staging branch
+  update_main:
     runs-on: ubuntu-latest
+    
     steps:
-    - uses: actions/checkout@master
-    - uses: Embraser01/update-git-branch-action@v1.0.0
-      if: github.ref == 'refs/heads/main'
+    - name: Checkout code
+      uses: actions/checkout@v2
+    
+    - name: Set up Git
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+    
+    - name: Create a new branch
+      run: git checkout -b main
+  
+    - name: Create file
+      run: echo aa > a
+    
+    - name: Commit changes
+      run: |
+        git add .
+        git commit -m "Update main branch"
+    
+    - name: Push changes
+      uses: ad-m/github-push-action@v0.6.0
       with:
         branch: main
-        force: 1 # To push-force to the branch
-        githubToken: ${{ secrets.PAT_TOKEN }} # Github Token
+        github_token: ${{ secrets.TOKEN }}
+    

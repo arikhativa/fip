@@ -19,7 +19,9 @@ jobs:
       run: git checkout -b main
   
     - name: Create file
-      run: node fip.js
+      run: |
+        npm i
+        npm start
     
     - name: Commit changes
       run: |

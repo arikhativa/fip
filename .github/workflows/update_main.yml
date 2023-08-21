@@ -1,7 +1,5 @@
 name: Update Main Branch
 
-on: push
-
 on:
   schedule:
     - cron: "*/5 * * * *"

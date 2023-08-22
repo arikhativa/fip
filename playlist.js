@@ -40,7 +40,7 @@ async function createPlaylist()
 		}
 	  });
   
-	  console.log('Playlist created and track added:', playlistId, addTrackResponse.data);
+	  console.log('Playlist created and track added:');
 	} catch (error) {
 	  console.error('Error:', error.response.data);
 	}

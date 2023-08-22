@@ -1,4 +1,4 @@
-name: Update Main Branch
+name: Add Song
 
 on:
   push:

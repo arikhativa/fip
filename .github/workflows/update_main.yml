@@ -1,8 +1,5 @@
 name: Update Main Branch
 
-on:
-  push:
-
 jobs:
   update_main:
     runs-on: ubuntu-latest

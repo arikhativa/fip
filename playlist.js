@@ -27,23 +27,23 @@ async function createPlaylist()
 {
 	refreshAccessToken();
 
-	try {
-	  const playlistId = '46N2EDBNHE3dZ9LOJHNJjU';
+	// try {
+	//   const playlistId = '46N2EDBNHE3dZ9LOJHNJjU';
   
-	  // Add a track to the playlist
-	  const addTrackResponse = await axios.post(`https://api.spotify.com/v1/playlists/${playlistId}/tracks`, {
-		uris: ['spotify:track:5cenvmo6pnbLY2BSGgAubL'] // Replace with a valid track URI
-	  }, {
-		headers: {
-		  Authorization: `Bearer ${accessToken}`,
-		  'Content-Type': 'application/json'
-		}
-	  });
+	//   // Add a track to the playlist
+	//   const addTrackResponse = await axios.post(`https://api.spotify.com/v1/playlists/${playlistId}/tracks`, {
+	// 	uris: ['spotify:track:5cenvmo6pnbLY2BSGgAubL'] // Replace with a valid track URI
+	//   }, {
+	// 	headers: {
+	// 	  Authorization: `Bearer ${accessToken}`,
+	// 	  'Content-Type': 'application/json'
+	// 	}
+	//   });
   
-	  console.log('Playlist created and track added:');
-	} catch (error) {
-	  console.error('Error:', error.response.data);
-	}
+	//   console.log('Playlist created and track added:');
+	// } catch (error) {
+	//   console.error('Error:', error.response.data);
+	// }
 }
 
 createPlaylist()

@@ -1,6 +1,7 @@
 name: Scrape Songs
 
 on:
+  workflow_dispatch:
   push:
   schedule:
     - cron: '*/5 * * * *'

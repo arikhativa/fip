@@ -56,5 +56,5 @@ function sleep(ms) {
 
 for (let i = 0; i < 20; i++) {
     main();
-    sleep(30000); 
+    sleep(300000); 
 }

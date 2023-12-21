@@ -5,15 +5,15 @@ const fs = require('fs');
 
 function getSongInfo(callback) {
   const options = {
-    url: 'https://www.radiofrance.fr/api/v2.1/stations/fip/live/webradios/fip',
+    url: 'https://www.radiofrance.fr/fip/api/live/webradios/fip',
   };
 
   request(options, (error, response, body) => {
     if (!error && response.statusCode === 200) {
-      const data = JSON.parse(body);
-      callback(data);
+        const data = JSON.parse(body);
+        callback(data);
     } else {
-      callback(error || new Error(`Request failed with status code ${response.statusMessage}`));
+      callback(error || new Error(`Request failed with status code ${response.statusCode}`));
     }
   });
 }
@@ -43,18 +43,19 @@ function main() {
 			fs.writeFile(filePath, updatedContent, (writeErr) => {
 			  if (writeErr) {
 				console.error('Error writing file:', writeErr);
-			  } else {
-				console.log('Text prepended successfully.');
 			  }
 			});
 		});
     }
   );
 }
-
-// function sleep(ms) {
-// 	return new Promise(resolve => setTimeout(resolve, ms));
-//   }
-
 main();
-// await sleep(30000); 
+
+function sleep(ms) {
+	return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+for (let i = 0; i < 20; i++) {
+    main();
+     sleep(30000); 
+}

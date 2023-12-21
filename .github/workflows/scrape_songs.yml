@@ -1,30 +1,35 @@
-name: Update Main Branch
+name: Scrape Songs
+
+on:
+  push:
+  schedule:
+    - cron: '*/5 * * * *'
 
 jobs:
-  update_main:
+  scrape_songs:
     runs-on: ubuntu-latest
     
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
     
+    - name: Scrape Songs
+      run: |
+        npm i
+        npm start
+
     - name: Set up Git
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
     
-    - name: Create a new branch
+    - name: Go to branch "main"
       run: git checkout main
   
-    - name: Create file
-      run: |
-        npm i
-        npm start
-    
     - name: Commit changes
       run: |
         git add .
-        git commit -m "Update main branch"
+        git commit -m "Update songs branch"
     
     - name: Push changes
       uses: ad-m/github-push-action@v0.6.0
@@ -32,4 +37,6 @@ jobs:
         branch: main
         github_token: ${{ secrets.TOKEN }}
         force: true
+    
+
     
